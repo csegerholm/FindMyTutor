@@ -1,0 +1,86 @@
+<div class="jumbotron text-center">
+	<h1>Sign Up</h1>
+
+	<div ng-hide='ctrl.isValid'>
+		Oops looks like you forgot a few things. Please check the following:
+		<p class='error' ng-repeat='(key,error) in ctrl.errors'>{{key}}</p>
+	</div>
+
+	<form>
+		<br>
+		<fieldset>
+			<legend>Personal information:</legend>
+			
+			Name:<br>
+			<input required type="text" ng-model="ctrl.form.name"><br>
+			<p class='error' ng-show='ctrl.errors.name!=undefined'>{{ctrl.errors.name}}</p>
+
+			Bio:<br>
+			<input required type="textarea" ng-model="ctrl.form.bio"><br>
+			<p class='error' ng-show='ctrl.errors.bio!=undefined'>{{ctrl.errors.bio}}</p>
+
+			School:<br>
+			<select required ng-model="ctrl.form.school">
+       			<option value='None' selected>None</option>
+       			<option ng-repeat="oneschool in ctrl.schools" value="oneschool">{{oneschool}}</option>
+         	</select>
+
+			<br>
+			Year:<br>
+			<input required type="text" ng-model="ctrl.form.year"><br>
+			<p class='error' ng-show='ctrl.errors.year!=undefined'>{{ctrl.errors.year}}</p>
+
+			Phone Number:<br>
+			<input required type="text" ng-model="ctrl.form.phone"><br>
+			<p class='error' ng-show='ctrl.errors.phone!=undefined'>{{ctrl.errors.phone}}</p>			
+
+			Email:<br>
+			<input required type="text" ng-model="ctrl.form.email"><br>
+			<p class='error' ng-show='ctrl.errors.email!=undefined'>{{ctrl.errors.email}}</p>
+
+			Password:<br>
+			<input required type="password" ng-model="ctrl.form.password"><br>
+			<p class='error' ng-show='ctrl.errors.password!=undefined'>{{ctrl.errors.password}}</p>
+
+		</fieldset>
+		
+		<br><br>
+		
+		<fieldset>
+			<legend>Session Preferences:</legend>			
+			
+			Preferred Campus:<br><br>
+			<select required ng-model="ctrl.form.preferredCampus">
+       			<option selected value='None'>None</option>
+       			<option ng-repeat="campus in ctrl.campuses" value="{{campus}}">{{campus}}</option>
+         	</select>
+			
+			<br><br>Preferred Times:<br>
+			<span ng-repeat="day in ctrl.days">
+       			{{day}}: <br/>
+
+       			<span ng-repeat="time in ctrl.times">
+       				<input type="checkbox" ng-model="ctrl.form[day][time]" ng-value="true" />{{time}} 
+       			</span>
+       		<br/>
+         	</span>
+		</fieldset>
+
+		<br><br>
+		<fieldset>		
+			<br>I would like to:<br><br>
+       			<select required ng-model="ctrl.form.tutor">
+					<option value="tutor" selected>Tutor Others</option>
+					<option value="tutee">Be Tutored</option>
+					<option value="both">Both</option>
+				</select>
+		</fieldset>
+
+
+		
+
+
+		<br><button ng-click="ctrl.submit()">Sign Up</button>
+	</form> 
+
+</div>
