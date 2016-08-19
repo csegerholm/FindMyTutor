@@ -47,12 +47,12 @@ class SignUpCtrl {
   validateName(){
     var name =this.form.name;
     var regex = /^[a-zA-Z\s]*$/;  
-    if(regex.test(name)){
+    if(regex.test(name) && name.length<50){
       this.newUser.name = name;
     }
     else{
       this.isValid=false;
-      this.errors.name = "Name must consist of only letters and spaces."
+      this.errors.name = "Name must consist of only letters and spaces. Max of 50 characters."
     }
   }
   validateBio(){
@@ -100,12 +100,12 @@ class SignUpCtrl {
   }
   validatePassword(){
     var password =this.form.password;
-    if(password.length>3){
+    if(password.length>3 && password.length <50){
       this.newUser.password=password;
     }
     else{
       this.isValid=false;
-      this.errors.password = "Min of 4 characters."
+      this.errors.password = "Min of 4 characters. Max of 50 characters."
     }
   }
 
@@ -160,7 +160,7 @@ class SignUpCtrl {
     //
     if(this.isValid){
       this.UserService.create(this.newUser).then(resp => {
-        if(resp.errorFields!=undefined){
+        if(resp.body.errorFields!=undefined){
           //print out errors
           console.log("Errors");
         }

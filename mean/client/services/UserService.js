@@ -1,14 +1,9 @@
 'use strict';
 
 function userService($http) {
-    // AngularJS will instantiate a singleton by calling "new" on this function
-    var baseUrl = './api/users/';
+  var baseUrl = './api/users/';
 
-    function test(){
-        console.log('TEST');
-    }
-  // AngularJS will instantiate a singleton by calling "new" on this function
-  function get() {
+  function getList() {
     return $http.get(baseUrl);
   }
 
@@ -16,26 +11,30 @@ function userService($http) {
    return $http.get(baseUrl+id);
   }
 
-  function post(user) {
+  function create(user) {
     return $http.post(baseUrl, user);
   }
 
-  function put(user) {
-     return $http.put(baseUrl+mess._id, user);
+  function update(user) {
+     return $http.put(baseUrl+user._id, user);
   }
 
   function deleteThis(user) {
     return $http.delete(baseUrl+user._id);
   }
 
+  function getMe(id) {
+    return $http.get(baseUrl+'me');
+  }
+
   //returns object of functions -> dictionary for functions this file defines
   return {
-    get: get,
+    getList: getList,
     getOne: getOne,
-    create: post,
-    update: put,
+    create: create,
+    update: update,
     deleteThis: deleteThis,
-    test: test
+    getMe: getMe
   };
 }
 

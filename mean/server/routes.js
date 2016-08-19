@@ -9,7 +9,9 @@ var MessageService = require('./services/MessageService');
         // server routes ===========================================================
         
         //USERS
-        app.get('/api/users', UserService.getAll);
+        app.get('/api/users', UserService.getList);
+        //app.get('/api/users/:id', UserService.getOne);
+        //app.get('/api/users/me', UserService.getMe);
         app.post('/api/users', UserService.create);
         //app.put('/api/users', UserService.update);
         //app.delete('/api/users', UserService.remove);
@@ -32,11 +34,11 @@ var MessageService = require('./services/MessageService');
         // app.put('/api/tsessions', TsessionService.update);
         // app.delete('/api/tsessions', TsessionService.remove);
 
-        //MESSAGES
-        app.get('/api/messages', MessageService.getAll);
-        // app.post('/api/messages', MessageService.create);
-        // app.put('/api/messages', MessageService.update);
-        // app.delete('/api/messages', MessageService.remove);
+        //MESSAGES - Done
+        app.get('/api/messages/receiver/:rID', MessageService.getAllWithReceiver);
+        app.get('/api/messages/sender/:sID', MessageService.getAllWithSender);
+        app.post('/api/messages', MessageService.create);
+        app.delete('/api/messages/:mID', MessageService.remove);
 
 	// frontend routes =========================================================
 	// route to handle all angular requests

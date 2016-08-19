@@ -3,13 +3,13 @@
 var mongoose = require('mongoose');
 var days = require('./days');
 var course = require('./course');
-var rating = require('./rating');
-var tsession = require('./tsession');
-
+var config = require('./../config/data');
 //List of possible schools user can be enrolled in (None means undeclared)
-var schools = ['None','SAS','SOE','SEBS','RBS'];
+var schools = config.schools;
+//['None','SAS','SOE','SEBS','RBS'];
 //List of RU campuses 
-var campuses = ['None', 'Busch', 'Cook-Douglass','College Ave','Livingston','Camden', 'Newark'];
+var campuses = config.campuses;
+//['None', 'Busch', 'Cook-Douglass','College Ave','Livingston','Camden', 'Newark'];
 
 
 //USER MODEL
@@ -36,22 +36,23 @@ module.exports = mongoose.model('User', {
 
 	//preferences
 	preferredCampus : {type : String, enum : campuses},
-	preferredTime : {type : [days]},
+	preferredTime : {type : [days] },
 
 	//Tutor Info
-	isTutor : {type: Boolean},
-	classesToTutor : {type: [course]},
-	ratings : {type : [rating]},
-	hourlyRate : {type : Number},
+	isTutor : {type: Boolean, default : false},
+	classesToTutor : {type: [course], default : []},
+	//rating -> array of rating ids (held in a seperate db)
+	ratings : {type : [String], default : []},
+	hourlyRate : {type : Number, default : 0},
 
 	//Tutee Info
-	isTutee: {type : Boolean},
-	classesToTutee : {type : [course]},
-	willingToPay : {type : Boolean},
+	isTutee: {type : Boolean, default : true},
+	classesToTutee : {type : [course], default : []},
+	willingToPay : {type : Boolean, default : false},
 
-	//Calendar Info
-	tsessions: {type: [tsession]},
+	//Calendar Info -> array of tsession ids (held in a seperate db)
+	tsessions: {type: [String], default : []},
 
 	//Inbox -> array of message ids (held in a seperate db)
-	messages : {type: [String]}
+	messages : {type: [String], default : []}
 });

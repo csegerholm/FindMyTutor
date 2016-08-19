@@ -1,9 +1,10 @@
 // Imports
 var mongoose = require('mongoose');
+var config = require('./../config/data');
 
 //Index matches times in the days object
-var times = ['morning','afternoon', 'evening', 'night'];
-var defaultTimes = [false,false,false, false];
+var times = config.times;
+var defaultTimes = config.defaultTimes;
 
 
 // Days MODEL

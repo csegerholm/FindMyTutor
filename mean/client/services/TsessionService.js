@@ -1,13 +1,8 @@
 'use strict';
 
 function tsessionService($http) {
-    // AngularJS will instantiate a singleton by calling "new" on this function
-    var baseUrl = './api/tsessions/';
+  var baseUrl = './api/tsessions/';
 
-    function test(){
-        console.log('TEST');
-    }
-  // AngularJS will instantiate a singleton by calling "new" on this function
   function get() {
     return $http.get(baseUrl);
   }
@@ -16,26 +11,25 @@ function tsessionService($http) {
    return $http.get(baseUrl+id);
   }
 
-  function post(mess) {
+  function create(mess) {
     return $http.post(baseUrl, mess);
   }
 
-  function put(mess) {
+  function update(mess) {
      return $http.put(baseUrl+mess._id, mess);
   }
 
-  function deleteThis(mess) {
-    return $http.delete(baseUrl+mess._id);
+  function deleteSession(sid) {
+    return $http.delete(baseUrl+sid);
   }
 
   //returns object of functions -> dictionary for functions this file defines
   return {
     get: get,
     getOne: getOne,
-    post: post,
-    update: put,
-    deleteThis: deleteThis,
-    test: test
+    create: create,
+    update: update,
+    deleteSession: deleteSession
   };
 }
 

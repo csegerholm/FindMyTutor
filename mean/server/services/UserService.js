@@ -1,7 +1,15 @@
 var User = require('./../models/user');
+var config = require('./../config/data');
+var hasher = require('./../validators/HashService');
+var validater = require('./../validators/UserValidation');
+
+//Fields of user we must go through when creating a user
+var fields = ['name','bio','year','phone','email','password', 'preferredCampus','school','preferredTime'];
 
 module.exports = {
-	getAll(req, res) {
+	getList(req, res) {
+	    //ONLY RETURN CERTAIN FIELDS
+
 	    // use mongoose to get all users in the database
 	    User.find(function(err, users) {
 
@@ -15,15 +23,19 @@ module.exports = {
 	},
 
 	create(req, res) {
-	   var newUser = req.body;
-	   if(newUser._id){
-	   		delete newUser._id;
-	   }
+	   var newUser = { 'isAdmin': false};
+	   var form = req.body;
+	   var errors = {};
 	   //Error Checking
-
-	   //Make password
-	   //newUser.hash =
-	   //newUser.hashedPassword = 
+	   for (var i in validater) {
+	   		if (! validater[i](newUser,errors,fields[i])){
+	   			res.json({'errorFields':errors});
+	   		}
+	   }
+	   if(typeof form.isTutor == 'boolean' && typeof form.isTutee == 'boolean'){
+	   		newUser.isTutee = form.isTutee;
+	   		newUser.isTutor = form.isTutor;
+	   }
 
 	    // use mongoose to get all users in the database
 	    User.create(newUser, function(err, ans) {

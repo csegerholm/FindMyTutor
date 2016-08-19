@@ -1,10 +1,12 @@
 // Imports
 var mongoose = require('mongoose');
+var config = require('./../config/data');
+
 
 //Structure for having no comments 
-var nocomments = [false, false, false];
+var nocomments = config.nocomments;
 //Index matches index of comments[]
-var listOfComments = ['No Show','Rude','Has Thick Accent'];
+var listOfComments = config.listOfComments;
 
 //RATING MODEL: gets generated for each session -> deleted if not filled out within a month
 module.exports = mongoose.model('Rating', {
