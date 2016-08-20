@@ -1,5 +1,37 @@
-body { padding-top:30px; }
+body { 
+padding-top:30px; 
+}
 
 .error{
 	color: red;
+	font: 16px "Tahoma", cursive;
+}
+h1{
+	border-top: 4px solid #7c7;
+	text-align: left;
+	background-color: #efe;
+	color: black;
+	font: 40px "Tahoma", cursive;
+	border-bottom: 4px solid 7c7;
+}
+
+legend{
+	font: 20px "Tahoma", cursive;
+	text-align: center;
+	background-color: teal;
+	color: white;
+	text-align: center;
+}
+
+form{
+	text-align: center;
+}
+.top{
+	color: black;
+	font: 20px "Tahoma", cursive;
+	text-align: left;
+}
+.homebox{
+	text-align: left;
+	font: 18px "Tahoma", cursive;
 }

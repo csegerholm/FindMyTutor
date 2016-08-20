@@ -1,9 +1,9 @@
-<div class="jumbotron text-center">
+<div class="page-header">
 	<h1>Sign Up</h1>
 
-	<div ng-hide='ctrl.isValid'>
-		Oops looks like you forgot a few things. Please check the following:
-		<p class='error' ng-repeat='(key,error) in ctrl.errors'>{{key}}</p>
+	<div class='top' ng-hide='ctrl.isValid'>
+		<span style="background-color: yellow">Please make sure to complete the form properly before submitting! Errors are marked in <span style="color: red"> red</span> below.</span>
+		<!<p class='error' ng-repeat='(key,error) in ctrl.errors'>{{key}}</p>
 	</div>
 
 	<form>
@@ -12,7 +12,7 @@
 			<legend>Personal information:</legend>
 			
 			Name:<br>
-			<input required type="text" ng-model="ctrl.form.name"><br>
+			<input required type="text" ng-model="ctrl.form.name" ><br>
 			<p class='error' ng-show='ctrl.errors.name!=undefined'>{{ctrl.errors.name}}</p>
 
 			Bio:<br>
@@ -26,7 +26,7 @@
          	</select>
 
 			<br>
-			Year:<br>
+			Graduation Year:<br>
 			<input required type="text" ng-model="ctrl.form.year"><br>
 			<p class='error' ng-show='ctrl.errors.year!=undefined'>{{ctrl.errors.year}}</p>
 
