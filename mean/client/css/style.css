@@ -1,5 +1,6 @@
 body { 
 padding-top:30px; 
+background-image: url("back.jpg");
 }
 
 .error{
@@ -34,4 +35,5 @@ form{
 .homebox{
 	text-align: left;
 	font: 18px "Tahoma", cursive;
+	
 }
