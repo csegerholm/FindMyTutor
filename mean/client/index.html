@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<base href="/">
 
-	<title>Find My Tutor</title>
+	<title>RU My Tutor</title>
 
 	<!-- CSS -->
 	
@@ -43,25 +43,31 @@
 	
 	<!-- HEADER -->
 	<nav class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">FMT</a>
+	 <div class="container-fluid">
+		   <div class="navbar-header">
+			<a class="navbar-brand" href="/">RU My Tutor</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a href="/findTutor">Find A Tutor</a></li>
+			<li><a href="/findTutor"><span class="glyphicon glyphicon-search"></span>Find A Tutor</a></li>
 			<li ng-show='MainController.isLoggedIn'><a href="/calendar">My Calendar</a></li>
-			<li ng-show='MainController.isLoggedIn'><a href="/inbox">My Inbox</a></li>
-			<li><a href="/contactUs">Contact Us</a></li>
-			<li ng-show='MainController.isLoggedIn'><a href="/me">My Account</a></li>
-			<li ng-hide='MainController.isLoggedIn'><a href="/logIn">Log In</a></li>
-			<li ng-hide='MainController.isLoggedIn'><a href="/signUp">Sign Up</a></li>
-		</ul>
+			<li ng-show='MainController.isLoggedIn'><a href="/inbox"><span class= "glyphicon glyphicon-envelope"></span>My Inbox</a></li>
+			<li><a href="/contactUs"><span class="glyphicon glyphicon-pencil"></span>Contact Us</a></li>
+			<li ng-show='MainController.isLoggedIn'><a href="/me"><span class="glyphicon glyphicon-user"></span>My Account</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			<li ng-hide='MainController.isLoggedIn'><a href="/logIn"><span class="glyphicon glyphicon-user"></span>Log In</a></li>
+			<li ng-hide='MainController.isLoggedIn'><a href="/signUp"><span class="glyphicon glyphicon-log-in"></span>Sign Up</a></li>
+			</ul>
+		
 	</nav>
+	
+
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>
 
 	<div class="footer">
-	  <p>Find My Tutor |
+	  <p>RU My Tutor |
 	    <a href="/contactUs">Concerns/Questions/Issues</a>
 	  </p>
 	</div>
